@@ -5,34 +5,36 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_0_account"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="我的账户" />
+        <item
+            android:id="@+id/nav_1_bill"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="账单管理" />
+        <item
+            android:id="@+id/nav_2_bus"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="公交查询" />
+        <item
+            android:id="@+id/nav_3_user"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="个人中心" />
+        <item
+            android:id="@+id/nav_4_life"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="生活助手" />
+        <item
+            android:id="@+id/nav_5_env"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="实时环境" />
+        <item
+            android:id="@+id/nav_6_light"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="红绿灯管理" />
+        <item
+            android:id="@+id/nav_7_road"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="路况分析" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
-
 </menu>

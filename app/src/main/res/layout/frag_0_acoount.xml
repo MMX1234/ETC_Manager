@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="账户余额："
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.297"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_carno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="车号："
+        app:layout_constraintStart_toStartOf="@+id/tv_balance"
+        app:layout_constraintTop_toBottomOf="@+id/tv_balance" />
+
+    <Spinner
+        android:id="@+id/sp_carno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_carno"
+        app:layout_constraintTop_toTopOf="@+id/tv_carno" />
+
+    <TextView
+        android:id="@+id/tv_recharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="充值金额："
+        app:layout_constraintStart_toStartOf="@+id/tv_carno"
+        app:layout_constraintTop_toBottomOf="@+id/tv_carno" />
+
+    <EditText
+        android:id="@+id/et_recharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/tv_recharge"
+        app:layout_constraintTop_toTopOf="@+id/tv_recharge" />
+
+    <Button
+        android:id="@+id/btn_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="查询"
+        app:layout_constraintStart_toStartOf="@+id/tv_balance"
+        app:layout_constraintTop_toBottomOf="@+id/tv_recharge" />
+
+    <Button
+        android:id="@+id/btn_recharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="充值"
+        app:layout_constraintStart_toEndOf="@+id/btn_query"
+        app:layout_constraintTop_toTopOf="@+id/btn_query" />
+
+</android.support.constraint.ConstraintLayout>
