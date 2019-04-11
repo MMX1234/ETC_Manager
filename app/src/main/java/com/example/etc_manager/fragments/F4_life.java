@@ -19,7 +19,7 @@ public class F4_life extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_4_life, container, false);
-        return view;
+        View v = inflater.inflate(R.layout.frag_4_life, container, false);
+        return v;
     }
 }

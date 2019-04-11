@@ -19,7 +19,7 @@ public class F6_light extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_6_light, container, false);
-        return view;
+        View v = inflater.inflate(R.layout.frag_6_light, container, false);
+        return v;
     }
 }

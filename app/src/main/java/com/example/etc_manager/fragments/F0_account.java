@@ -44,13 +44,13 @@ public class F0_account extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_0_acoount, container, false);
-        tv_balance = view.findViewById(R.id.tv_balance);
-        sp_carno = view.findViewById(R.id.sp_carno);
-        et_recharge = view.findViewById(R.id.et_recharge);
-        btn_query = view.findViewById(R.id.btn_query);
+        View v = inflater.inflate(R.layout.frag_0_acoount, container, false);
+        tv_balance = v.findViewById(R.id.tv_balance);
+        sp_carno = v.findViewById(R.id.sp_carno);
+        et_recharge = v.findViewById(R.id.et_recharge);
+        btn_query = v.findViewById(R.id.btn_query);
         btn_query.setOnClickListener(this);
-        btn_recharge = view.findViewById(R.id.btn_recharge);
+        btn_recharge = v.findViewById(R.id.btn_recharge);
 
         String[] spinnerItems = {"1", "2", "3"};
         ArrayAdapter<String> carAdapter = new ArrayAdapter<>(
@@ -62,7 +62,7 @@ public class F0_account extends Fragment implements View.OnClickListener {
         url = "http://192.168.0.74:8890/type/jason/action/GetCarAccountBalance.do";
         json = "{'CarId':" + sp_carno.getSelectedItemPosition() + "}";
         tv_balance.setText("账户余额：" + new Okhttp().getResult(url, json));
-        return view;
+        return v;
     }
 
     @Override
@@ -81,7 +81,8 @@ public class F0_account extends Fragment implements View.OnClickListener {
 
                     if ("{'result':'ok'}".equals(new Okhttp().getResult(url, json))) {
 
-                        helper = new MyDatabaseHelper(getContext(), "Recharge.db", null, 1);
+                        //这里的数据库在登录或者注册时就应该创建的
+                        helper = new MyDatabaseHelper(getContext(), "ETC.db", null, 1);
                         helper.getWritableDatabase();
                         SQLiteDatabase db = helper.getWritableDatabase();
                         ContentValues values = new ContentValues();

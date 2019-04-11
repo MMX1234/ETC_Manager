@@ -1,6 +1,7 @@
 package com.example.etc_manager.activities;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,22 +22,26 @@ import com.example.etc_manager.fragments.F4_life;
 import com.example.etc_manager.fragments.F5_env;
 import com.example.etc_manager.fragments.F6_light;
 import com.example.etc_manager.fragments.F7_road;
+import com.example.etc_manager.fragments.Fa_signIn;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private Fragment[] fragments;
-    private FragmentManager fm;
+    private FragmentManager fm = getSupportFragmentManager();
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // 标题
+        // 标题栏
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+    }
 
+    private void showLayout() {
         // 抽屉开关
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -59,7 +64,9 @@ public class MainActivity extends AppCompatActivity
                 new F6_light(),
                 new F7_road()
         };
-        fm = getSupportFragmentManager();
+
+        toolbar.setTitle("我的账户");
+        fm.beginTransaction().replace(R.id.frag, fragments[0]).commit();
     }
 
     // 抽屉返回事件处理
@@ -102,7 +109,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-
 
         switch (item.getItemId()) {
             case R.id.nav_0_account:

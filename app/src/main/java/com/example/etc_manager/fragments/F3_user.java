@@ -19,7 +19,7 @@ public class F3_user extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_3_user, container, false);
-        return view;
+        View v = inflater.inflate(R.layout.frag_3_user, container, false);
+        return v;
     }
 }

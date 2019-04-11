@@ -37,8 +37,8 @@ public class F1_bill extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_1_bill, container, false);
-        spinner = view.findViewById(R.id.spinner_bill);
+        View v = inflater.inflate(R.layout.frag_1_bill, container, false);
+        spinner = v.findViewById(R.id.spinner_bill);
         String[] spinnerItems = {"时间降序", "时间升序"};
         ArrayAdapter<String> carAdapter = new ArrayAdapter<>(
                 getContext(),
@@ -46,12 +46,12 @@ public class F1_bill extends Fragment implements View.OnClickListener {
                 spinnerItems
         );
         spinner.setAdapter(carAdapter);
-        button = view.findViewById(R.id.btn_bill_query);
-        listView = view.findViewById(R.id.listView_bill);
+        button = v.findViewById(R.id.btn_bill_query);
+        listView = v.findViewById(R.id.listView_bill);
 
         button.setOnClickListener(this);
 
-        return view;
+        return v;
     }
 
     public void Query() {
