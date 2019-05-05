@@ -1,10 +1,12 @@
 package com.example.etc_manager.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,10 +33,17 @@ public class Fa_signIn extends Fragment implements View.OnClickListener, Compoun
     private String uid = null;
     private String pass = null;
 
+    private FragmentManager manager;
+    private Activity activity;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_a_sign_in, container, false);
+
+        manager = getFragmentManager();
+        activity=getActivity();
+
         et_uid = v.findViewById(R.id.et_uid);
         et_pass = v.findViewById(R.id.et_pass);
 
@@ -60,10 +69,10 @@ public class Fa_signIn extends Fragment implements View.OnClickListener, Compoun
                 onSignInClick();
                 break;
             case R.id.btn_singUp:
-                replaceFrag(new Fa_signUp());
+                replaceFrag(manager,new Fa_signUp());
                 break;
             case R.id.btn_forgetPass:
-                replaceFrag(new Fa_resetPass_getCode());
+                replaceFrag(manager,new Fa_resetPass_getCode());
                 break;
         }
     }
@@ -88,7 +97,7 @@ public class Fa_signIn extends Fragment implements View.OnClickListener, Compoun
             if (user.getUid() != null) {
                 if (user.getPass().equals(pass)) {
                     startActivity(new Intent(getContext(), MainActivity.class));
-                    getActivity().finish();
+                    activity.finish();
                 } else Toast.makeText(getContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
             } else Toast.makeText(getContext(), "不存在此用户名", Toast.LENGTH_SHORT).show();
         } else Toast.makeText(getContext(), "不存在此用户名", Toast.LENGTH_SHORT).show();
@@ -108,9 +117,8 @@ public class Fa_signIn extends Fragment implements View.OnClickListener, Compoun
         }
     }
 
-    public void replaceFrag(Fragment fragment) {
-        getFragmentManager()
-                .beginTransaction()
+    public void replaceFrag(FragmentManager manager,Fragment fragment) {
+        manager.beginTransaction()
                 .setCustomAnimations(R.animator.sign_in_in, R.animator.sign_in_out, R.animator.sign_in_in, R.animator.sign_in_out)
                 .addToBackStack(null)
                 .replace(R.id.frag, fragment)

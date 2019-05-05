@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,10 +27,15 @@ public class Fa_resetPass_getCode extends Fragment implements View.OnClickListen
     private Button btn_back;
     private String sCode;
 
+    private FragmentManager manager;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_resetpass_getcode, container, false);
+
+        manager = getFragmentManager();
+
         et_phone = v.findViewById(R.id.et_phone);
         et_code = v.findViewById(R.id.et_code);
         btn_getCode = v.findViewById(R.id.btn_getCode);
@@ -55,14 +61,14 @@ public class Fa_resetPass_getCode extends Fragment implements View.OnClickListen
                     Toast.makeText(getContext(), "请输入验证码: " + s_code, Toast.LENGTH_SHORT).show();
                 } else {
                     if (s_code.equals(sCode)) {
-                        new Fa_signIn().replaceFrag(new Fa_resetPass());
+                        new Fa_signIn().replaceFrag(manager,new Fa_resetPass());
                     } else {
                         Toast.makeText(getContext(), "验证码有误，请重新输入", Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
             case R.id.btn_back:
-                getFragmentManager().popBackStack();
+                manager.popBackStack();
                 break;
         }
     }
