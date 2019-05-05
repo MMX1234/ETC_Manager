@@ -20,9 +20,7 @@ import com.example.etc_manager.R;
 import com.example.etc_manager.utils.MyDatabaseHelper;
 import com.example.etc_manager.utils.Okhttp;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class F0_account extends Fragment implements View.OnClickListener {
 
@@ -61,7 +59,7 @@ public class F0_account extends Fragment implements View.OnClickListener {
         sp_carno.setAdapter(carAdapter);
         url = "http://192.168.0.74:8890/type/jason/action/GetCarAccountBalance.do";
         json = "{'CarId':" + sp_carno.getSelectedItemPosition() + "}";
-        tv_balance.setText("账户余额：" + new Okhttp().getResult(url, json));
+
         return v;
     }
 
@@ -69,38 +67,43 @@ public class F0_account extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_query:
-                tv_balance.setText("账户余额：" + new Okhttp().getResult(url, json));
+                getBalance();
                 break;
             case R.id.btn_recharge:
-                if (et_recharge.getText() != null
-                        && 0 < Integer.parseInt(et_recharge.getText().toString())
-                        && Integer.parseInt(et_recharge.getText().toString()) < 999) {
-                    url = "http://192.168.0.74:8890/type/jason/action/SetCarAccountRecharge.do";
-                    json = "{'CarId':" + sp_carno.getSelectedItemPosition()
-                            + ",'Money'" + et_recharge.getText().toString() + "}";
-
-                    if ("{'result':'ok'}".equals(new Okhttp().getResult(url, json))) {
-
-                        //这里的数据库在登录或者注册时就应该创建的
-                        helper = new MyDatabaseHelper(getContext(), "ETC.db", null, 1);
-                        helper.getWritableDatabase();
-                        SQLiteDatabase db = helper.getWritableDatabase();
-                        ContentValues values = new ContentValues();
-                        values.put("car_no", sp_carno.getSelectedItemPosition());
-                        values.put("money", et_recharge.getText().toString());
-                        values.put("operator", "1");
-                        values.put("time", String.valueOf(Calendar.getInstance()));
-                        db.insert("Recharge", null, values);
-
-                        Toast.makeText(getContext(), sp_carno.getSelectedItemPosition() + "号车成功充值：" + et_recharge.getText() + "元", Toast.LENGTH_SHORT).show();
-                        tv_balance.setText("账户余额：" + new Okhttp().getResult(url, "{'CarId':" + sp_carno.getSelectedItemPosition() + "}"));
-                    } else {
-                        Toast.makeText(getContext(), "充值失败", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(getContext(), "必需输入1-999的整数", Toast.LENGTH_SHORT).show();
-                }
+                recharge();
                 break;
         }
+    }
+
+    public void getBalance() {
+        tv_balance.setText("账户余额：" + new Okhttp().getResult(url, json));
+    }
+
+    public void recharge() {
+        if (et_recharge.getText() != null
+                && 0 < Integer.parseInt(et_recharge.getText().toString())
+                && Integer.parseInt(et_recharge.getText().toString()) < 999) {
+            url = "http://192.168.0.74:8890/type/jason/action/SetCarAccountRecharge.do";
+            json = "{'CarId':" + sp_carno.getSelectedItemPosition()
+                    + ",'Money'" + et_recharge.getText().toString() + "}";
+
+            if ("{'result':'ok'}".equals(new Okhttp().getResult(url, json))) {
+
+                //这里的数据库在登录或者注册时就应该创建的
+                helper = new MyDatabaseHelper(getContext(), "ETC.db", null, 1);
+                helper.getWritableDatabase();
+                SQLiteDatabase db = helper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+                values.put("car_no", sp_carno.getSelectedItemPosition());
+                values.put("money", et_recharge.getText().toString());
+                values.put("operator", "1");
+                values.put("time", String.valueOf(Calendar.getInstance()));
+                db.insert("Recharge", null, values);
+
+                Toast.makeText(getContext(), sp_carno.getSelectedItemPosition() + "号车成功充值：" + et_recharge.getText() + "元", Toast.LENGTH_SHORT).show();
+                tv_balance.setText("账户余额：" + new Okhttp().getResult(url, "{'CarId':" + sp_carno.getSelectedItemPosition() + "}"));
+            } else Toast.makeText(getContext(), "充值失败", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(getContext(), "必需输入1-999的整数", Toast.LENGTH_SHORT).show();
+
     }
 }

@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity
         // 标题栏
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        showLayout();
     }
 
     private void showLayout() {
