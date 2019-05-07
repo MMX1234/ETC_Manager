@@ -3,20 +3,20 @@ package com.example.etc_manager.model;
 import org.litepal.crud.LitePalSupport;
 
 public class User extends LitePalSupport {
-    private String uid;
-    private String pass;
-    private String repass;
-    private String idNo;
-    private String name;
     private String tel;
+    private String pass;
+    private String idNo;
+    private String gender;
 
-    public String getUid() {
-        return uid;
+    public String getDate() {
+        return date;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setDate(String date) {
+        this.date = date;
     }
+
+    private String date;
 
     public String getPass() {
         return pass;
@@ -24,14 +24,6 @@ public class User extends LitePalSupport {
 
     public void setPass(String pass) {
         this.pass = pass;
-    }
-
-    public String getRepass() {
-        return repass;
-    }
-
-    public void setRepass(String repass) {
-        this.repass = repass;
     }
 
     public String getIdNo() {
@@ -42,19 +34,19 @@ public class User extends LitePalSupport {
         this.idNo = idNo;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getTel() {
         return tel;
     }
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

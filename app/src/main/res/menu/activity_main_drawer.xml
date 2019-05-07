@@ -16,25 +16,5 @@
             android:id="@+id/nav_2_bus"
             android:icon="@drawable/ic_menu_manage"
             android:title="公交查询" />
-        <item
-            android:id="@+id/nav_3_user"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="个人中心" />
-        <item
-            android:id="@+id/nav_4_life"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="生活助手" />
-        <item
-            android:id="@+id/nav_5_env"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="实时环境" />
-        <item
-            android:id="@+id/nav_6_light"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="红绿灯管理" />
-        <item
-            android:id="@+id/nav_7_road"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="路况分析" />
     </group>
 </menu>

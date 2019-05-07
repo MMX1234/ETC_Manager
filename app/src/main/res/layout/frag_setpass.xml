@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/et_resetPass"
+        android:id="@+id/et_setPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -23,13 +23,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_reresetPass"
+        android:id="@+id/et_resetPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="请确认密码"
         android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/et_setPass"
+        app:layout_constraintStart_toStartOf="@+id/et_setPass"
+        app:layout_constraintTop_toBottomOf="@+id/et_setPass" />
+
+    <EditText
+        android:id="@+id/et_idNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="请输入身份证号"
+        android:inputType="number"
+        android:maxLength="18"
         app:layout_constraintEnd_toEndOf="@+id/et_resetPass"
         app:layout_constraintStart_toStartOf="@+id/et_resetPass"
         app:layout_constraintTop_toBottomOf="@+id/et_resetPass" />
@@ -38,17 +51,16 @@
         android:id="@+id/btn_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="8dp"
         android:text="上一步"
-        app:layout_constraintStart_toStartOf="@+id/et_resetPass"
-        app:layout_constraintTop_toBottomOf="@+id/et_reresetPass" />
+        app:layout_constraintStart_toStartOf="@+id/et_idNo"
+        app:layout_constraintTop_toBottomOf="@+id/et_idNo" />
 
     <Button
         android:id="@+id/btn_applyResetPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="确认重置"
-        app:layout_constraintEnd_toEndOf="@+id/et_resetPass"
+        app:layout_constraintEnd_toEndOf="@+id/et_idNo"
         app:layout_constraintTop_toTopOf="@+id/btn_up" />
 </android.support.constraint.ConstraintLayout>

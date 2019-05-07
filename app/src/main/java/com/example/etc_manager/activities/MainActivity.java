@@ -1,7 +1,6 @@
 package com.example.etc_manager.activities;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,14 +16,6 @@ import com.example.etc_manager.R;
 import com.example.etc_manager.fragments.F0_account;
 import com.example.etc_manager.fragments.F1_bill;
 import com.example.etc_manager.fragments.F2_bus;
-import com.example.etc_manager.fragments.F3_user;
-import com.example.etc_manager.fragments.F4_life;
-import com.example.etc_manager.fragments.F5_env;
-import com.example.etc_manager.fragments.F6_light;
-import com.example.etc_manager.fragments.F7_road;
-import com.example.etc_manager.fragments.Fa_signIn;
-
-import java.io.File;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -59,12 +50,7 @@ public class MainActivity extends AppCompatActivity
         fragments = new Fragment[]{
                 new F0_account(),
                 new F1_bill(),
-                new F2_bus(),
-                new F3_user(),
-                new F4_life(),
-                new F5_env(),
-                new F6_light(),
-                new F7_road()
+                new F2_bus()
         };
 
         toolbar.setTitle("我的账户");
@@ -106,7 +92,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    // 导航选项事件处理
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -124,26 +109,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_2_bus:
                 toolbar.setTitle(item.getTitle());
                 fm.beginTransaction().replace(R.id.frag, fragments[2]).commit();
-                break;
-            case R.id.nav_3_user:
-                toolbar.setTitle(item.getTitle());
-                fm.beginTransaction().replace(R.id.frag, fragments[3]).commit();
-                break;
-            case R.id.nav_4_life:
-                toolbar.setTitle(item.getTitle());
-                fm.beginTransaction().replace(R.id.frag, fragments[4]).commit();
-                break;
-            case R.id.nav_5_env:
-                toolbar.setTitle(item.getTitle());
-                fm.beginTransaction().replace(R.id.frag, fragments[5]).commit();
-                break;
-            case R.id.nav_6_light:
-                toolbar.setTitle(item.getTitle());
-                fm.beginTransaction().replace(R.id.frag, fragments[6]).commit();
-                break;
-            case R.id.nav_7_road:
-                toolbar.setTitle(item.getTitle());
-                fm.beginTransaction().replace(R.id.frag, fragments[7]).commit();
                 break;
         }
 
